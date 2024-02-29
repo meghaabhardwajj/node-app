@@ -13,3 +13,6 @@ Run these commands:
 
 `node app.js`
 
+`sudo npm install -g pm2`
+
+
