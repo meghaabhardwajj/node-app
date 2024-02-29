@@ -15,4 +15,5 @@ Run these commands:
 
 `sudo npm install -g pm2`
 
+`npm install express`
 
