@@ -10,6 +10,7 @@ pipeline {
         
         stage('Checkout'){
             steps{
+                git credentialsId: 'GITHUB_CICD_TOKEN',
                 url: 'https://github.com/meghaabhardwajj/node-app.git', branch: 'dev' 
             }
         }
