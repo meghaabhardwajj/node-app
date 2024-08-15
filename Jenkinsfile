@@ -44,7 +44,7 @@ pipeline {
 
         stage('Prepare K8S manifest') {
     steps {
-        sh 'cp deploy.template.yaml deploy.yaml'
+        sh 'cp deploy.template deploy.yaml'
     }
 }
         
