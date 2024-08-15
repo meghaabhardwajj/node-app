@@ -66,5 +66,15 @@ pipeline {
                 }
             }
         }
+
+        stage('Apply Argo CD Application') {
+            steps {
+                script {
+                    withCredentials([file(credentialsId: 'KUBECONFIG', variable: 'KUBECONFIG')]) {
+                        sh "kubectl apply -f argocd-application.yaml"
+                    }
+                }
+            }
+        }
     }
 }
