@@ -41,6 +41,12 @@ pipeline {
                 branch: 'main'
             }
         }
+
+        stage('Prepare K8S manifest') {
+    steps {
+        sh 'cp deploy.template.yaml deploy.yaml'
+    }
+}
         
         stage('Update K8S manifest & push to Repo'){
             steps {
@@ -48,7 +54,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'GITHUB_CICD_TOKEN', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                         sh '''
                         cat deploy.yaml
-                        sed -i "s/{{TAG}}/${BUILD_NUMBER}/g" deploy.yaml
+                        sed -i "s/latest/${BUILD_NUMBER}/g" deploy.yaml
                         cat deploy.yaml
                         git config --global user.email "meghaabhardwajj@gmail.com"
                         git config --global user.name "Megha Bhardwaj"
