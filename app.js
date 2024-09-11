@@ -75,6 +75,9 @@ app.get('/todo', function (req, res) {
         }
         res.redirect('/todo');
     })
+    .get('/', function (req, res) {
+        res.status(200).send()
+    })
     /* Redirects to the to do list if the page requested is not found */
     .use(function (req, res, next) {
         res.redirect('/todo');
